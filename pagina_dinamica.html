@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página Dinámica</title>
+</head>
+<body>
+  <h1>Mi Página Dinámica</h1>
+
+  
+  <label for="nombre">Ingresa tu nombre:</label>
+  <input type="text" id="nombre" placeholder="Ingresa tu nombre">
+  <button onclick="mostrarSaludo()">Saludar</button>
+
+  <hr>
+
+  
+  <label>
+    <input type="checkbox" id="cambiarFondo" onchange="cambiarColorFondo()"> Cambiar color de fondo
+  </label>
+
+  <hr>
+
+  
+  <label for="opciones">Selecciona una opción:</label>
+  <select id="opciones" onchange="mostrarSeleccion()">
+    <option value="Opción 1">Opción 1</option>
+    <option value="Opción 2">Opción 2</option>
+    <option value="Opción 3">Opción 3</option>
+  </select>
+  <p id="mensaje"></p>
+
+  <hr>
+
+  
+  <button onclick="cambiarColorPersonalizado()">Cambiar color personalizado</button>
+
+  <script>
+    
+    function mostrarSaludo() {
+      const nombre = document.getElementById("nombre").value;
+      if (nombre) {
+        alert("¡Hola, " + nombre + "!");
+      } else {
+        alert("Por favor, ingresa tu nombre.");
+      }
+    }
+
+    
+    function cambiarColorFondo() {
+      const checkbox = document.getElementById("cambiarFondo");
+      if (checkbox.checked) {
+        if (confirm("¿Estás seguro de cambiar el color de fondo?")) {
+          document.body.style.backgroundColor = "lightblue";
+        } else {
+          checkbox.checked = false;
+        }
+      } else {
+        document.body.style.backgroundColor = "";
+      }
+    }
+
+    
+    function mostrarSeleccion() {
+      const seleccion = document.getElementById("opciones").value;
+      document.getElementById("mensaje").textContent = "Has seleccionado: " + seleccion;
+    }
+
+    
+    function cambiarColorPersonalizado() {
+      const color = prompt("Ingresa un color para el fondo (en inglés):");
+      if (color) {
+        document.body.style.backgroundColor = color;
+      }
+    }
+  </script>
+</body>
+</html>
